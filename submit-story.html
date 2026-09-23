@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Share a Story — Understanding the Himalayans</title>
+<meta name="description" content="Understanding the Himalayans — community stories, disaster experiences and place-based documentation.">
+<script>
+try{
+  const t=localStorage.getItem("himalayans-theme") ||
+    (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.documentElement.dataset.theme=t;
+}catch(e){}
+</script>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+<div data-site-header></div>
+
+<main>
+<section class="page-hero"><div class="container"><span class="eyebrow">Participate</span><h1>Share a Story</h1><p>Your experience can help preserve local knowledge and show how disasters affect homes, livelihoods, landscapes and relationships. Share as much detail as you feel comfortable providing.</p></div></section>
+<section class="section form-section reveal"><div class="container form-layout">
+<div class="form-intro"><span class="section-kicker">Your voice matters</span><h2>Tell us what happened</h2><p>Share a memory, observation or lived experience from your community. The form is arranged step by step so you can add details at your own pace.</p><div class="form-note"><strong>Before you begin</strong><span>You can skip any optional detail and come back to it later.</span></div><div class="form-guide"><strong>Helpful details to include</strong><ul><li>What happened and when it happened</li><li>Where the event took place</li><li>How people, homes or livelihoods were affected</li><li>What your community remembers or learned</li></ul></div></div>
+<form class="contact-form form-panel" id="storySubmissionForm"  action="mailto:contact@storycycle.com" method="post" enctype="text/plain">
+  <div class="form-progress" aria-label="Story form progress"><span class="progress-dot active">1</span><span></span><span class="progress-dot">2</span><span></span><span class="progress-dot">3</span><b>Step 1 of 3</b></div>
+  <div class="form-card-block form-step"><div class="form-card-title"><span>01</span><div><h3>About you</h3><p>Tell us who is sharing this story.</p></div></div>
+    <div class="compact-row"><label>Your name<input name="name" required placeholder="Your full name"></label><label>Email<input id="shareEmail" name="email" type="email" required placeholder="you@example.com"></label></div>
+    <div class="email-verify-box"><div><strong>Verify your email</strong><span>We use this to confirm that the story came from the email address you entered.</span></div><button type="button" class="btn light" id="sendVerifyBtn">Send verification code</button><div id="verifyCodeArea" class="verify-code-area hidden"><label>Verification code<input id="verifyCode" inputmode="numeric" maxlength="6" placeholder="6-digit code"></label><button type="button" class="btn primary" id="verifyCodeBtn">Verify email</button><small id="demoCodeHint" class="demo-code-hint"></small></div><p id="verifyStatus" class="verify-status" role="status"></p></div>
+    <div class="form-step-actions"><span></span><button type="button" class="btn primary" data-next>Next: place and event details →</button></div>
+  </div>
+  <div class="form-card-block form-step" hidden><div class="form-card-title"><span>02</span><div><h3>Where & what</h3><p>Add the basic details of the event.</p></div></div>
+    <div class="compact-row"><label>Province<select name="province" id="shareProvince" required><option value="">Select province</option></select></label><label>District<select name="district" id="shareDistrict" required><option value="">Select district</option></select></label></div>
+    <div class="compact-row"><label>Place / locality<select name="place" id="sharePlace" required><option value="">Select place</option></select></label><label>Other place <input name="other_place" id="otherPlace" placeholder="If not listed"></label></div>
+    <div class="compact-row"><label>Disaster type<select name="disaster"><option value="">Select type</option><option>Flood</option><option>Landslide</option><option>Earthquake</option><option>Glacial lake outburst flood</option><option>Heavy Rain</option><option>Storm</option><option>Other</option></select></label><label>Date of event<input name="date" type="date"></label></div>
+    <div class="compact-row"><label>Story title<input name="title" required placeholder="Give your story a meaningful title"></label><label>Location note<input name="location_note" placeholder="Optional landmark / ward / nearby place"></label></div>
+    <div class="share-map-box"><div class="share-map-head"><div><strong>Exact map location</strong><small>Add latitude and longitude if you know the exact location. This will create a direct Google Maps link.</small></div><a id="shareMapPreview" class="share-map-link disabled" href="#" target="_blank" rel="noopener noreferrer">Go to Google Maps ↗</a></div><div class="share-section-grid"><label>Latitude<input id="shareLat" name="lat" type="number" min="-90" max="90" step="any" placeholder="28.3949"><span class="field-help">Between -90 and 90</span></label><label>Longitude<input id="shareLng" name="lng" type="number" min="-180" max="180" step="any" placeholder="84.1240"><span class="field-help">Between -180 and 180</span></label></div></div>
+    <div class="form-step-actions"><button type="button" class="btn light" data-prev>← Back</button><button type="button" class="btn primary" data-next>Next: write your story →</button></div>
+  </div>
+  <div class="form-card-block form-step" hidden><div class="form-card-title"><span>03</span><div><h3>Your story</h3><p>Write it in your own words. The team will review it before publishing.</p></div></div>
+    <label>Your story<textarea name="story" rows="9" required placeholder="What happened? How did it affect people, homes, livelihoods or the landscape? What do you remember or want others to learn?"></textarea></label>
+    <div class="share-photo-box"><label class="share-photo-drop"><input id="sharePhotos" name="photos" type="file" accept="image/*" multiple><span class="upload-icon">＋</span><span><b>Add story photos</b><small>JPG, PNG or WebP · up to 1.5 MB each</small></span></label><div id="sharePhotoPreview" class="share-photo-preview"></div></div>
+    <label>Photo or file note<span class="field-help">Add credits or explain what the photographs, recordings or documents show.</span><textarea name="photo_note" rows="3" placeholder="Example: Photo 1 shows the flooded road; photos taken by the community member."></textarea></label>
+    <label class="check"><input type="checkbox" name="contact_consent" required> I agree that the project team may contact me about this story.</label>
+    <label class="check"><input type="checkbox" name="publication_consent" required> I understand that if approved, this story may be published publicly.</label>
+    <div class="submission-notice"><strong>What happens next?</strong><span>Your story is saved for review. The project team checks each submission before it appears publicly.</span></div>
+    <button class="btn primary" type="submit">Submit for review <span>→</span></button>
+    <p id="submissionMessage" class="submission-message" role="status"></p>
+    <div class="form-step-actions"><button type="button" class="btn light" data-prev>← Back</button><span></span></div>
+  </div>
+</form>
+</div></section>
+</main>
+<div data-site-footer></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/js_main/data.js"></script>
+<script src="js/js_main/filters.js"></script>
+<script src="js/js_main/common.js"></script>
+<script>renderHeader("submit");renderFooter();</script>
+<script>
+const storyForm = document.getElementById("storySubmissionForm");
+const submissionMessage = document.getElementById("submissionMessage");
+const shareProvince = document.getElementById("shareProvince");
+const shareDistrict = document.getElementById("shareDistrict");
+const sharePlace = document.getElementById("sharePlace");
+const otherPlace = document.getElementById("otherPlace");
+const shareEmail = document.getElementById("shareEmail");
+const sendVerifyBtn = document.getElementById("sendVerifyBtn");
+const verifyCodeArea = document.getElementById("verifyCodeArea");
+const verifyCode = document.getElementById("verifyCode");
+const verifyCodeBtn = document.getElementById("verifyCodeBtn");
+const verifyStatus = document.getElementById("verifyStatus");
+const demoCodeHint = document.getElementById("demoCodeHint");
+const formSteps = Array.from(document.querySelectorAll(".form-step"));
+const progressDots = Array.from(document.querySelectorAll(".progress-dot"));
+const progressLabel = document.querySelector(".form-progress b");
+let currentStep = 0;
+let generatedCode = "";
+let emailVerified = false;
+
+function showFormStep(index) {
+  currentStep = Math.max(0, Math.min(index, formSteps.length - 1));
+  formSteps.forEach((step, stepIndex) => { step.hidden = stepIndex !== currentStep; });
+  progressDots.forEach((dot, dotIndex) => {
+    dot.classList.toggle("active", dotIndex === currentStep);
+    dot.classList.toggle("complete", dotIndex < currentStep);
+  });
+  if (progressLabel) progressLabel.textContent = `Step ${currentStep + 1} of ${formSteps.length}`;
+  formSteps[currentStep]?.querySelector("input, select, textarea, button")?.focus({ preventScroll: true });
+  window.scrollTo({ top: Math.max(0, storyForm.offsetTop - 100), behavior: "smooth" });
+}
+
+document.querySelectorAll("[data-next]").forEach(button => button.addEventListener("click", () => {
+  const currentFields = formSteps[currentStep].querySelectorAll("input, select, textarea");
+  for (const field of currentFields) {
+    if (!field.checkValidity()) { field.reportValidity(); return; }
+  }
+  showFormStep(currentStep + 1);
+}));
+document.querySelectorAll("[data-prev]").forEach(button => button.addEventListener("click", () => showFormStep(currentStep - 1)));
+
+function fillShareLocations() {
+  const provinces = typeof nepalDistricts !== "undefined" ? Object.keys(nepalDistricts) : [];
+  shareProvince.innerHTML = '<option value="">Select province</option>' + provinces.map(p => `<option value="${escapeHtml(p)}">${escapeHtml(p)}</option>`).join("");
+}
+function fillDistricts() {
+  const p = shareProvince.value;
+  const districts = (typeof nepalDistricts !== "undefined" && p) ? (nepalDistricts[p] || []) : [];
+  shareDistrict.innerHTML = '<option value="">Select district</option>' + districts.map(d => `<option value="${escapeHtml(d)}">${escapeHtml(d)}</option>`).join("");
+  sharePlace.innerHTML = '<option value="">Select place</option>';
+}
+function fillPlaces() {
+  const p = shareProvince.value, d = shareDistrict.value;
+  const places = [...new Set(stories.filter(s => (!p || s.province === p) && (!d || s.district === d)).map(s => s.place).filter(Boolean))].sort();
+  sharePlace.innerHTML = '<option value="">Select place</option>' + places.map(pl => `<option value="${escapeHtml(pl)}">${escapeHtml(pl)}</option>`).join("") + '<option value="__other__">Other / not listed</option>';
+}
+shareProvince.addEventListener("change", fillDistricts);
+shareDistrict.addEventListener("change", fillPlaces);
+sharePlace.addEventListener("change", () => {
+  const custom = sharePlace.value === "__other__";
+  otherPlace.required = custom;
+  otherPlace.disabled = !custom;
+  if (!custom) otherPlace.value = "";
+});
+fillShareLocations();
+otherPlace.disabled = true;
+
+function setVerifyStatus(message, ok=false) {
+  verifyStatus.textContent = message;
+  verifyStatus.className = `verify-status ${ok ? "ok" : ""}`;
+}
+sendVerifyBtn.addEventListener("click", () => {
+  const email = shareEmail.value.trim();
+  if (!shareEmail.checkValidity()) { shareEmail.reportValidity(); return; }
+  generatedCode = String(Math.floor(100000 + Math.random() * 900000));
+  emailVerified = false;
+  verifyCodeArea.classList.remove("hidden");
+  verifyCode.value = "";
+  // Static GitHub Pages demo: a real email sender needs a backend/service such as EmailJS or Supabase.
+  demoCodeHint.textContent = `Demo mode — verification code: ${generatedCode}`;
+  setVerifyStatus(`Verification code created for ${email}.`);
+});
+verifyCodeBtn.addEventListener("click", () => {
+  if (verifyCode.value.trim() === generatedCode && generatedCode) {
+    emailVerified = true;
+    setVerifyStatus("Email verified ✓", true);
+    shareEmail.readOnly = true;
+    sendVerifyBtn.disabled = true;
+  } else {
+    emailVerified = false;
+    setVerifyStatus("That code is not correct. Please try again.");
+  }
+});
+shareEmail.addEventListener("input", () => {
+  emailVerified = false;
+  generatedCode = "";
+  verifyCodeArea.classList.add("hidden");
+  demoCodeHint.textContent = "";
+  setVerifyStatus("");
+  sendVerifyBtn.disabled = false;
+  shareEmail.readOnly = false;
+});
+
+function validCoords(lat,lng){ const a=Number(lat), b=Number(lng); return lat!=="" && lng!=="" && Number.isFinite(a)&&Number.isFinite(b)&&a>=-90&&a<=90&&b>=-180&&b<=180; }
+function updateShareMap(){ const link=document.getElementById("shareMapPreview"); const lat=document.getElementById("shareLat").value.trim(), lng=document.getElementById("shareLng").value.trim(); if(!validCoords(lat,lng)){link.classList.add("disabled");link.href="#";return;} link.classList.remove("disabled"); link.href=`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${lat},${lng}`)}`; }
+document.getElementById("shareLat")?.addEventListener("input",updateShareMap); document.getElementById("shareLng")?.addEventListener("input",updateShareMap);
+function previewSharePhotos(){ const root=document.getElementById("sharePhotoPreview"), files=Array.from(document.getElementById("sharePhotos")?.files||[]); root.innerHTML=files.map(f=>`<div class="share-photo-thumb"><img src="${URL.createObjectURL(f)}" alt="Photo preview"><span>${escapeHtml(f.name)}</span></div>`).join(""); }
+document.getElementById("sharePhotos")?.addEventListener("change",previewSharePhotos);
+function compressShareImage(file,maxSide=1600,quality=.82){ return new Promise((resolve,reject)=>{ if(!file.type.startsWith("image/")) return reject(new Error(`${file.name} is not an image.`)); if(file.size>1.5*1024*1024) return reject(new Error(`${file.name} is larger than 1.5 MB.`)); const r=new FileReader(); r.onload=()=>{const img=new Image();img.onload=()=>{const scale=Math.min(1,maxSide/Math.max(img.width,img.height));const c=document.createElement("canvas");c.width=Math.max(1,Math.round(img.width*scale));c.height=Math.max(1,Math.round(img.height*scale));c.getContext("2d").drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL("image/jpeg",quality));};img.onerror=()=>reject(new Error(`Could not read ${file.name}.`));img.src=r.result;};r.onerror=()=>reject(new Error(`Could not read ${file.name}.`));r.readAsDataURL(file);}); }
+
+storyForm?.addEventListener("submit", async event => {
+  event.preventDefault();
+  if (!emailVerified) { setVerifyStatus("Please verify your email before submitting the story."); return; }
+  const data = Object.fromEntries(new FormData(storyForm).entries());
+  if (!validCoords(data.lat, data.lng)) { alert("Please enter valid latitude and longitude, or leave both blank if you do not know the exact location."); return; }
+  let media=[];
+  try { const files=Array.from(document.getElementById("sharePhotos")?.files||[]); media=await Promise.all(files.map(async f=>({type:"image",url:await compressShareImage(f),caption:f.name}))); } catch(err){ alert(err.message); return; }
+  const stateKey = "himalayans-admin-state";
+  let state = {};
+  try { state = JSON.parse(localStorage.getItem(stateKey) || "{}"); } catch(e) { state = {}; }
+  state.submissions = Array.isArray(state.submissions) ? state.submissions : [];
+  const selectedPlace = data.place === "__other__" ? data.other_place : data.place;
+  const id = `submission-${Date.now()}`;
+  const eventDate = data.date || "";
+  const year = eventDate ? eventDate.slice(0,4) : new Date().getFullYear().toString();
+  state.submissions.push({
+    id, source:"user", name:data.name || "", email:data.email || "", title:data.title || "", province:data.province || "", district:data.district || "", place:selectedPlace || "", location_note:data.location_note || "", disaster:data.disaster || "", date:eventDate, year,
+    story:data.story || "", description:(data.story || "").slice(0,180), photo_note:data.photo_note || "", image:media[0]?.url || "", media, links:[], lat:Number(data.lat), lng:Number(data.lng), status:"pending", submittedAt:new Date().toISOString(), emailVerified:true
+  });
+  localStorage.setItem(stateKey, JSON.stringify(state));
+  storyForm.reset();
+  emailVerified = false; generatedCode = "";
+  verifyCodeArea.classList.add("hidden");
+  demoCodeHint.textContent = "";
+  setVerifyStatus("");
+  otherPlace.disabled = true;
+  document.getElementById("shareMapPreview")?.classList.add("disabled");
+  document.getElementById("shareMapPreview")?.setAttribute("href","#");
+  document.getElementById("sharePhotoPreview").innerHTML="";
+  fillShareLocations();
+  submissionMessage.textContent = "Thank you for sharing your story through the website. It was submitted successfully and is now waiting for review.";
+  submissionMessage.className = "submission-message success";
+});
+</script>
+</body></html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="images/logo-website.png" style="width: 100%; height: 100%;">
+<title>Understanding the Himalayans</title>
+<meta name="description" content="Understanding the Himalayans — community stories, disaster experiences and place-based documentation.">
+<script>
+try{
+  const t=localStorage.getItem("himalayans-theme") ||
+    (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.documentElement.dataset.theme=t;
+}catch(e){}
+</script>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body class="home-page">
+<div data-site-header></div>
+
+<main>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Stories from the Himalayas</span>
+      <h1>Understanding the Himalayans</h1>
+      <p>The Himalayas are one of the world's most remarkable mountain ranges, stretching across <a href="https://www.britannica.com/place/Nepal-Himalayas" style="color: inherit; text-decoration: underline;" target="#"">Nepal</a>, <a href="https://www.britannica.com/place/Bhutan" style="color: inherit; text-decoration: underline;" target="#">Bhutan</a>, <a href="https://www.britannica.com/place/China" style="color: inherit; text-decoration: underline;" target="#">China</a>, <a href="https://www.britannica.com/place/Pakistan" style="color: inherit; text-decoration: underline;" target="#">Pakistan</a>, and <a href="https://www.britannica.com/place/Afghanistan" style="color: inherit; text-decoration: underline;" target="#">Afghanistan</a>. They are home to Mount Everest, the world's highest mountain, as well as diverse landscapes, wildlife, and communities. For millions of people, the Himalayas are more than mountains. They are home to unique cultures, traditions, languages, and ways of life shaped by the mountain environment.
+
+Explore the Himalayas through its people, stories, culture, and landscapes.</p>
+      <div class="hero-actions"><a class="btn primary" href="stories.html">Explore stories</a><a class="btn light" href="submit-story.html">Share a story</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats"><div class="container stats-grid">
+  <div><strong data-stat="stories">0</strong><span>Stories</span></div>
+  <div><strong data-stat="provinces">0</strong><span>Covered provinces</span></div>
+  <div><strong data-stat="districts">0</strong><span>Covered districts</span></div>
+  <div><strong data-stat="disasters">0</strong><span>Disaster types</span></div>
+  <div><strong data-stat="years">0</strong><span>Years covered</span></div>
+</div></section>
+
+<section class="section reveal"><div class="container">
+  <div class="section-head"><div><span class="eyebrow">Featured</span><h2>Recent community stories</h2></div><a href="stories.html" class="text-link">View all stories →</a></div>
+  <div id="featuredStories" class="story-grid"></div>
+</div></section>
+
+<section class="section alt reveal"><div class="container split">
+  <div><span class="eyebrow">Explore the map</span><h2>See where stories are being documented</h2><p>Use the map to explore story locations across Nepal. The map below is a preview of the story points, while the full Map page includes your Google My Maps map.</p><a class="btn primary" href="map.html">Open full map</a></div>
+  <div id="homeMap" class="map-preview"></div>
+</div></section>
+
+<section class="section reveal home-about"><div class="container"><div class="section-head"><div><span class="eyebrow">About the project</span><h2>Why Understanding the Himalayans exists</h2></div><a href="about.html" class="text-link">Read the full about page →</a></div><div class="about-home-grid"><article><span class="about-icon">01</span><h3>Listen to lived experience</h3><p>We collect community memories and firsthand accounts alongside place, date and disaster information.</p></article><article><span class="about-icon">02</span><h3>Connect stories to place</h3><p>Every story is organised by province, district and locality, with map links so readers can explore where it happened.</p></article><article><span class="about-icon">03</span><h3>Review before publishing</h3><p>User submissions enter a pending queue. The project team reviews them before they can appear publicly as an approved User Story.</p></article></div></div></section>
+
+<section class="section reveal"><div class="container"><div class="section-head"><div><span class="eyebrow">How it works</span><h2>From a local memory to a mapped public story</h2><p>Understanding the Himalayans brings together place, experience and community knowledge in one accessible archive.</p></div></div><div class="home-info-grid"><article class="home-info-card"><span class="num">01</span><h3>Share</h3><p>People can submit a story with their name, verified email, location, coordinates, photos and the experience they want to preserve.</p></article><article class="home-info-card"><span class="num">02</span><h3>Review</h3><p>Submitted stories stay pending until the project team checks the information and decides whether to publish them.</p></article><article class="home-info-card"><span class="num">03</span><h3>Explore</h3><p>Approved stories become part of the public archive, connected to a map and a Google Maps location for easier exploration.</p></article></div></div></section>
+
+<section class="section alt reveal"><div class="container"><div class="home-note"><span class="eyebrow">What we document</span><h2>More than a disaster map</h2><p>Each record can preserve what happened, where it happened, when it happened, how people were affected, what communities remember, and what lessons or local knowledge should not be lost. The aim is to keep the human story alongside the geographic record.</p><div class="home-info-grid"><article class="home-info-card"><span class="num">A</span><h3>People</h3><p>Firsthand accounts, community memories and lived experiences.</p></article><article class="home-info-card"><span class="num">B</span><h3>Place</h3><p>Province, district, locality and precise coordinates where available.</p></article><article class="home-info-card"><span class="num">C</span><h3>Evidence</h3><p>Photos, notes, links and contextual information that help explain each story.</p></article></div></div></div></section>
+
+<section class="section reveal"><div class="container"><div class="section-head"><div><span class="eyebrow">Get involved</span><h2>Help build the archive</h2><p>If you witnessed an event, have a community story, or have photographs and local knowledge that should be preserved, you can contribute it for review.</p></div><a class="btn primary" href="submit-story.html">Share your story →</a></div></div></section>
+
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<div data-site-footer></div>
+<script src="js/js_main/data.js"></script>
+<script src="js/js_main/filters.js"></script>
+<script src="js/js_main/common.js"></script>
+<script src="js/js_main/app.js"></script>
+</body></html>

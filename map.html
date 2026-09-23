@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Map — Understanding the Himalayans</title>
+<meta name="description" content="Understanding the Himalayans — community stories, disaster experiences and place-based documentation.">
+<script>
+try{
+  const t=localStorage.getItem("himalayans-theme") ||
+    (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.documentElement.dataset.theme=t;
+}catch(e){}
+</script>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+<div data-site-header></div>
+
+<main>
+<section class="page-hero"><div class="container"><span class="eyebrow">Map</span><h1>Story map</h1><p>Filter the documented stories by covered area, then explore their locations.</p></div></section>
+<section class="section reveal"><div class="container">
+  <div class="filter-box">
+    <div class="filter-grid">
+      <label>Province<select id="mapProvince"></select></label>
+      <label>District<select id="mapDistrict"></select></label>
+      <label>Place<select id="mapPlace"></select></label>
+      <label>Disaster type<select id="mapDisaster"></select></label>
+    </div>
+    <div class="filter-actions"><span>Only locations with stories are listed.</span><button id="resetMap" class="btn secondary">Reset map</button></div>
+  </div>
+  <div id="storyMap" class="big-map"></div>
+</div></section>
+
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<div data-site-footer></div>
+<script src="js/js_main/data.js"></script>
+<script src="js/js_main/filters.js"></script>
+<script src="js/js_main/common.js"></script>
+<script src="js/js_main/map.js"></script>
+</body></html>

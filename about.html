@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Understanding the Himalayans</title>
+<meta name="description" content="Understanding the Himalayans — community stories, disaster experiences and place-based documentation.">
+<script>
+try{
+  const t=localStorage.getItem("himalayans-theme") ||
+    (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.documentElement.dataset.theme=t;
+}catch(e){}
+</script>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+<div data-site-header></div>
+
+<main>
+<section class="page-hero"><div class="container"><span class="eyebrow">About</span><h1>Understanding the Himalayans</h1><p>A place for community voices, local knowledge and disaster stories connected to specific places.</p></div></section>
+<section class="section about-intro reveal"><div class="container about-intro-grid">
+  <div><span class="section-kicker">A living archive</span><h2>Listening to places, preserving memory.</h2><p>This project documents stories and experiences from Himalayan communities, especially experiences connected to floods, landslides, earthquakes, heavy rainfall, glacial lake outburst floods and other hazards.</p></div>
+  <div class="about-quote"><span>“</span><p>Local knowledge helps us understand not only what happened, but what changed afterwards.</p></div>
+</div></section>
+<section class="section about-values reveal"><div class="container"><div class="section-heading"><div><span class="section-kicker">Our approach</span><h2>Stories with context</h2></div></div><div class="value-grid">
+  <article class="value-card"><span class="value-number">01</span><h3>Listen first</h3><p>Community experience is treated as essential knowledge, not a footnote.</p></article>
+  <article class="value-card"><span class="value-number">02</span><h3>Keep it grounded</h3><p>Each story is connected to a Province, District and Place so its setting remains visible.</p></article>
+  <article class="value-card"><span class="value-number">03</span><h3>Make it discoverable</h3><p>Filters and maps help people find related experiences across the archive.</p></article>
+</div></div></section>
+<section class="section reveal"><div class="container about-process"><div><span class="section-kicker">Explore the archive</span><h2>How the filters work</h2></div><div><p>The filters are data-driven. They do not display every administrative area in Nepal. They only display provinces, districts and places that are present in the story collection.</p><p>When a new story is added, its location, disaster type and year automatically become available for discovery.</p><a class="btn primary" href="stories.html">Explore stories</a></div></div></section>
+</main>
+<div data-site-footer></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/js_main/data.js"></script>
+<script src="js/js_main/filters.js"></script>
+<script src="js/js_main/common.js"></script>
+<script>renderHeader("about");renderFooter();</script>
+</body></html>
