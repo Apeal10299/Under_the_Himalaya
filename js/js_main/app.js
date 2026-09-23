@@ -5,7 +5,7 @@ renderFooter();
 const featured = document.getElementById("featuredStories");
 if (featured) {
   const newestSubmission = stories
-    .filter(s => s.source === "user" && s.submittedAt)
+    .filter(s => s.source === "user" || s.source === "admin-added")
     .sort((a, b) => new Date(b.submittedAt) - new Date(a.submittedAt))
     .slice(0, 3);
   featured.innerHTML = newestSubmission.length ? newestSubmission.map(s => `

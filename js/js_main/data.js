@@ -250,7 +250,7 @@ window.himalayanBaseStories = stories.map(s => JSON.parse(JSON.stringify(s)));
 
     const approvedAdded = added
       .filter(s => (s.status || "approved") === "approved" && !deleted.has(String(s.id)))
-      .map(s => ({ ...s, ...(overrides[String(s.id)] || {}), source: "admin" }));
+      .map(s => ({ ...s, ...(overrides[String(s.id)] || {}), source: "admin-added" }));
 
     stories.length = 0;
     stories.push(...base, ...approvedAdded, ...approvedSubmissions);

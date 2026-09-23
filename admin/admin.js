@@ -297,7 +297,8 @@ async function saveStory(e) {
     lat: Number(latValue),
     lng: Number(lngValue),
     links: [],
-    status: "approved"
+    status: "approved",
+    submittedAt: id ? undefined : new Date().toISOString()
   };
 
   const s = ensureState();
