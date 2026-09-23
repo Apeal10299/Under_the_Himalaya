@@ -877,7 +877,7 @@ footer {
   gap: 35px;
 }
 .site-footer {
-  background: #102a43;
+  background: #0781f3;
   color: #dce8ef;
   padding: 55px 0 20px;
   margin-top: 40px;
@@ -923,8 +923,7 @@ footer {
   font-weight: 700;
   color: #ebf6f6;
 }
-.filter-grid input,
-.filter-grid select,
+.filter-grid #1e3f5c.filter-grid select,
 .contact-form input,
 .contact-form textarea {
   font: inherit;
@@ -1770,7 +1769,7 @@ html[data-theme="dark"] .filter-grid select option:focus {
 }
 
 .site-footer {
-  background: linear-gradient(145deg, #071a20, #0d3035) !important;
+  background: #1D3F5B;
   padding: 64px 0 22px;
   border-top: 1px solid rgba(105, 197, 192, 0.18);
 }
@@ -1784,10 +1783,6 @@ html[data-theme="dark"] .filter-grid select option:focus {
   height: 44px;
   margin-bottom: 18px;
   border-radius: 13px;
-  background: var(--brand);
-  color: #09262c;
-  font-size: 1.2rem;
-  font-weight: 900;
 }
 .footer-brand-block h3 {
   font-size: 1.15rem;
@@ -2225,8 +2220,8 @@ html[data-theme="light"] .home-page .stats-grid > div {
   color: var(--text);
 }
 html[data-theme="light"] .home-page .hero-actions .btn.primary {
-  background: linear-gradient(135deg, #82d8d1, #55bcb9) !important;
-  color: #07363d !important;
+  background: ;
+  color: #e7f1f3 !important;
 }
 html[data-theme="light"] .about-quote {
   background: linear-gradient(145deg, #0f6b72, #176b6e) !important;
@@ -2850,9 +2845,6 @@ html[data-theme="light"] body:not(.home-page) .about-quote span {
 }
 .site-footer a:hover {
 	color: #bfe8f8 !important;
-}
-.site-footer .footer-mark img {
-	filter: brightness(0) invert(1);
 }
 html[data-theme="light"] body .site-footer h3,
 html[data-theme="light"] body .site-footer h4,

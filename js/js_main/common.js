@@ -133,9 +133,9 @@ function renderFooter() {
   const root = document.querySelector("[data-site-footer]");
   if (!root) return;
   root.innerHTML = `
-    <footer class="site-footer">
+    <footer class="site-footer" style>
       <div class="container footer-grid">
-        <div class="footer-brand-block"><div class="footer-mark"><img src="images/logo.png" alt="Understanding the Himalayans Logo" style="width: 200px; height: 40px;"></div><h3>Understanding the Himalayans</h3><p>"StoryCycle harnesses the power of storytelling and digital mapping to drive social impact, environmental sustainability, and community engagement. We are a registered 501(c)(3) nonprofit organization, which means your generous donations are tax-deductible.”</p></div>
+        <div class="footer-brand-block"><div class="footer-mark"><img src="images/footer-logo.png" alt="Understanding the Himalayans Logo" style="width: 200px; height: 40px;"></div><h3>Understanding the Himalayans</h3><p>"StoryCycle harnesses the power of storytelling and digital mapping to drive social impact, environmental sustainability, and community engagement. We are a registered 501(c)(3) nonprofit organization, which means your generous donations are tax-deductible.”</p></div>
         <div class="footer-links"><h4>Explore</h4><a href="https://storycycle.com/" target="_blank" rel="noopener">StoryCycle Website</a><a href="stories.html">Stories</a><a href="map.html">Map</a><a href="about.html">About</a></div>
         <div class="footer-links">
           <h4>Resources</h4>

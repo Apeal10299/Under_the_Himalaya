@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StoryCycle Footer Wireframe</title>
+  <style>
+    :root {
+      --bg: #0d3047;
+      --bg-2: #0f3a54;
+      --text: #ffffff;
+      --muted: #dfeaf2;
+      --line: rgba(255,255,255,0.18);
+      --accent: #8edaf7;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+    }
+
+    .wireframe {
+      min-height: 100vh;
+      background: var(--bg);
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .footer-shell {
+      width: 100%;
+      min-height: 420px;
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+      padding: 42px 42px 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 0.9fr 1.1fr;
+      gap: 42px;
+      align-items: start;
+      min-height: 270px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 28px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #d8ecf9;
+      position: relative;
+      display: inline-block;
+    }
+
+    .logo::before {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #0d3047;
+      left: 13px;
+      top: 11px;
+    }
+
+    .logo::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #0d3047;
+      left: 16px;
+      top: 24px;
+    }
+
+    .brand-name {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 2.5vw, 3rem);
+      line-height: 1.05;
+      margin: 0;
+      letter-spacing: -0.05em;
+      font-weight: 700;
+    }
+
+    .intro {
+      max-width: 540px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .links-col,
+    .contact-col {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding-top: 6px;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+
+    .nav-list,
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-list li,
+    .contact-item {
+      font-size: 1.05rem;
+      line-height: 1.5;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 30px;
+    }
+
+    .icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.35);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .scroll-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .scroll-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    @media (max-width: 900px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-shell {
+        padding: 28px 20px 16px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wireframe">
+    <footer class="footer-shell">
+      <div class="footer-grid">
+        <div class="brand-wrap">
+          <div class="brand-row">
+            <span class="logo" aria-label="StoryCycle logo"></span>
+            <h1 class="brand-name">storycycle</h1>
+          </div>
+
+          <h2>Understanding the Himalayans</h2>
+
+          <p class="intro">
+            "StoryCycle harnesses the power of storytelling and digital mapping to drive social impact,
+            environmental sustainability, and community engagement. We are a registered 501(c)(3) nonprofit
+            organization, which means your generous donations are tax-deductible."
+          </p>
+        </div>
+
+        <div class="links-col">
+          <div class="section-title">Explore</div>
+          <ul class="nav-list">
+            <li>StoryCycle Website</li>
+            <li>Stories</li>
+            <li>Map</li>
+            <li>About</li>
+          </ul>
+        </div>
+
+        <div class="contact-col">
+          <div class="section-title">Resources</div>
+          <ul class="contact-list">
+            <li class="contact-item"><span class="icon">☎</span> +977-1-4112128</li>
+            <li class="contact-item"><span class="icon">✉</span> contact@storycycle.com</li>
+            <li class="contact-item"><span class="icon">◉</span> Shakti Binayak Marg, Gangalun, Kathmandu, Nepal</li>
+            <li class="contact-item"><span class="icon">◉</span> 1001 W Euless Blvd #319, Euless, TX 76040, USA</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Story Cycle All rights reserved.</div>
+        <div class="scroll-box">
+          <span>Stories rooted in place by</span>
+          <span class="scroll-btn">↑</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
